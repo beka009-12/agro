@@ -1,0 +1,148 @@
+.homeFilter {
+  padding-block: 40px;
+}
+.filterContainer {
+  color: #105f2d;
+}
+
+.filterTitle {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #3b7a57;
+}
+
+.filterSection {
+  margin-bottom: 2rem;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  color: #105f2d;
+}
+
+.categoriesList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.categoryItem {
+  background: #e8f5e9;
+  border-radius: 12px;
+  padding: 0.5rem 1rem;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.categoryItem:hover {
+  background: #c8e6c9;
+}
+
+.categoryLabel {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.categoryInput {
+  accent-color: #3b7a57;
+}
+
+.categoryText {
+  font-weight: 500;
+}
+
+.regionSelect {
+  width: 100%;
+  padding: 0.7rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 16px;
+}
+
+.unitTypeButtons {
+  display: flex;
+  gap: 1rem;
+}
+
+.unitTypeButton {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 10px;
+  background: #f4b400;
+  color: white;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.unitTypeButton:hover {
+  background: #f57c00;
+}
+
+.unitTypeButton.active {
+  background: #2e5e3e;
+}
+
+.priceInputs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.priceInputGroup {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.priceLabel {
+  margin-bottom: 0.5rem;
+}
+
+.priceInput {
+  padding: 0.5rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+}
+
+.filterActions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.applyButton,
+.resetButton {
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: 0.3s;
+}
+
+.applyButton {
+  background: #5ba35d;
+  color: white;
+}
+
+.applyButton:hover {
+  background: #3b7a57;
+}
+
+.resetButton {
+  background: #f4b400;
+  color: white;
+}
+
+.resetButton:hover {
+  background: #f57c00;
+}

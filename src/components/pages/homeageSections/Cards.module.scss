@@ -1,0 +1,55 @@
+.Cards {
+  padding-block: 40px;
+
+  .filterTitle {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #3b7a57;
+  }
+
+  .content {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: space-between;
+  }
+
+  .buttonWrapper {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .showMoreBtn,
+  .hideBtn {
+    padding: 10px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .showMoreBtn {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+
+    &:hover {
+      background-color: #388e3c;
+    }
+  }
+
+  .hideBtn {
+    background-color: white;
+    color: #4caf50;
+    border: 2px solid #4caf50;
+
+    &:hover {
+      background-color: #e8f5e9;
+    }
+  }
+}
