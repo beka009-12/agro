@@ -23,7 +23,7 @@ const Cards: FC = () => {
         <h2 className={scss.filterTitle}>Продукты</h2>
         <div className={scss.content}>
           {allCards.slice(0, visibleCount).map((_, index) => (
-            <Card key={index} />
+            <Card key={index} id={index} />
           ))}
         </div>
 

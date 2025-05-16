@@ -1,9 +1,20 @@
 import { type FC } from "react";
+import { useNavigate } from "react-router-dom";
 import scss from "./Card.module.scss";
 
-const Card: FC = () => {
+interface CardProps {
+  id: number;
+}
+
+const Card: FC<CardProps> = ({ id }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/details/${id}`);
+  };
+
   return (
-    <section className={scss.card}>
+    <section className={scss.card} onClick={handleClick}>
       <div className={scss.imageBlock}>
         <div className={scss.badge}>Органик</div>
         <div className={scss.imagePlaceholder}>
