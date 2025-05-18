@@ -5,10 +5,10 @@ import Cards from "./homeageSections/Cards";
 
 const HomePage: FC = () => {
   return (
-    <section className={scss.HomePage}>
+    <div className={scss.HomePage}>
       <HomeFilter />
       <Cards />
-    </section>
+    </div>
   );
 };
 

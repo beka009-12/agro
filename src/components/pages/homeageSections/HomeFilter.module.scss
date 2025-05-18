@@ -1,148 +1,333 @@
 .homeFilter {
-  padding-block: 40px;
-}
-.filterContainer {
-  color: #105f2d;
-}
+  padding: 2rem 0;
+  background-color: #f9f9f9;
 
-.filterTitle {
-  font-size: 28px;
-  font-weight: 600;
-  margin-bottom: 1.5rem;
-  color: #3b7a57;
-}
+  .filterContainer {
+    background-color: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
 
-.filterSection {
-  margin-bottom: 2rem;
-}
+  .filterTitle {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1.5rem;
+    position: relative;
 
-.sectionTitle {
-  font-size: 18px;
-  font-weight: 500;
-  margin-bottom: 1rem;
-  color: #105f2d;
-}
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background-color: #4caf50; // Зеленый цвет для сельскохозяйственной тематики
+    }
+  }
 
-.categoriesList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
+  .filterSection {
+    margin-bottom: 2rem;
 
-.categoryItem {
-  background: #e8f5e9;
-  border-radius: 12px;
-  padding: 0.5rem 1rem;
-  transition: 0.3s;
-  cursor: pointer;
-}
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 
-.categoryItem:hover {
-  background: #c8e6c9;
-}
+  .sectionTitle {
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: #555;
+    margin-bottom: 1rem;
+  }
 
-.categoryLabel {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
+  // Категории
+  .categoriesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
 
-.categoryInput {
-  accent-color: #3b7a57;
-}
+    @media (max-width: 768px) {
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    }
+  }
 
-.categoryText {
-  font-weight: 500;
-}
+  .categoryCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border-radius: 12px;
+    background-color: #f5f8f5;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+    cursor: pointer;
 
-.regionSelect {
-  width: 100%;
-  padding: 0.7rem;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  background: #fff;
-  font-size: 16px;
-}
+    &:hover {
+      transform: translateY(-4px);
+      background-color: #edf7ed;
+    }
 
-.unitTypeButtons {
-  display: flex;
-  gap: 1rem;
-}
+    &.active {
+      border-color: #4caf50;
+      background-color: #edf7ed;
+      box-shadow: 0 2px 10px rgba(76, 175, 80, 0.15);
+    }
+  }
 
-.unitTypeButton {
-  padding: 0.6rem 1.2rem;
-  border: none;
-  border-radius: 10px;
-  background: #f4b400;
-  color: white;
-  font-weight: 500;
-  cursor: pointer;
-  transition: 0.3s;
-}
+  .categoryImage {
+    width: 100%;
+    height: 84px;
+    object-fit: contain;
+    margin-bottom: 0.5rem;
+    transition: transform 0.3s ease;
 
-.unitTypeButton:hover {
-  background: #f57c00;
-}
+    .categoryCard:hover & {
+      transform: scale(1.01);
+    }
+  }
 
-.unitTypeButton.active {
-  background: #2e5e3e;
-}
+  .categoryCardLabel {
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    color: #444;
+  }
 
-.priceInputs {
-  display: flex;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
+  // Регион
+  .regionSelect {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%23555' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 1rem) center;
+    background-size: 12px;
+    font-size: 1rem;
+    color: #444;
+    transition: border-color 0.3s ease;
 
-.priceInputGroup {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
+    &:focus {
+      outline: none;
+      border-color: #4caf50;
+      box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+    }
 
-.priceLabel {
-  margin-bottom: 0.5rem;
-}
+    option {
+      font-size: 1rem;
+      color: #444;
+    }
+  }
 
-.priceInput {
-  padding: 0.5rem;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  font-size: 15px;
-}
+  // Тип товара
+  .unitTypeButtons {
+    display: flex;
+    gap: 1rem;
 
-.filterActions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 2rem;
-}
+    @media (max-width: 576px) {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
 
-.applyButton,
-.resetButton {
-  padding: 0.8rem 1.5rem;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: 500;
-  cursor: pointer;
-  border: none;
-  transition: 0.3s;
-}
+  .unitTypeButton {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    background-color: #fff;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.3s ease;
 
-.applyButton {
-  background: #5ba35d;
-  color: white;
-}
+    &:hover {
+      background-color: #f5f8f5;
+    }
 
-.applyButton:hover {
-  background: #3b7a57;
-}
+    &.active {
+      background-color: #4caf50;
+      border-color: #4caf50;
+      color: #fff;
+    }
+  }
 
-.resetButton {
-  background: #f4b400;
-  color: white;
-}
+  // Цена
+  .priceInputs {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
 
-.resetButton:hover {
-  background: #f57c00;
+    @media (max-width: 576px) {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+
+  .priceInputGroup {
+    display: flex;
+    align-items: center;
+    flex: 1;
+
+    .priceLabel {
+      margin-right: 0.5rem;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .priceInput {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      border: 1px solid #e0e0e0;
+      font-size: 1rem;
+      color: #444;
+      transition: border-color 0.3s ease;
+
+      &:focus {
+        outline: none;
+        border-color: #4caf50;
+        box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+      }
+
+      /* Убираем стрелки у input type="number" */
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+      }
+
+      /* Firefox */
+      -moz-appearance: textfield;
+    }
+  }
+
+  // Ползунки
+  .rangeSlider {
+    position: relative;
+    height: 5px;
+    margin: 1.5rem 0.5rem 1rem;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+
+    input[type="range"] {
+      position: absolute;
+      width: 100%;
+      height: 5px;
+      -webkit-appearance: none;
+      pointer-events: none;
+      background: transparent;
+
+      &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #4caf50;
+        border: 2px solid white;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        pointer-events: auto;
+        z-index: 10;
+      }
+
+      &::-moz-range-thumb {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #4caf50;
+        border: 2px solid white;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        pointer-events: auto;
+        z-index: 10;
+      }
+
+      &:focus {
+        outline: none;
+
+        &::-webkit-slider-thumb {
+          box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3);
+        }
+
+        &::-moz-range-thumb {
+          box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.3);
+        }
+      }
+    }
+  }
+
+  .rangeValues {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+
+    span {
+      font-size: 0.85rem;
+      color: #666;
+      font-weight: 500;
+    }
+  }
+
+  // Кнопки действий
+  .filterActions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+
+    @media (max-width: 576px) {
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+  }
+
+  .applyButton,
+  .resetButton {
+    padding: 0.875rem 1.5rem;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    &:hover {
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  .applyButton {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    flex: 3;
+    box-shadow: 0 4px 10px rgba(76, 175, 80, 0.2);
+
+    &:hover {
+      background-color: #45a049;
+      box-shadow: 0 6px 15px rgba(76, 175, 80, 0.25);
+    }
+  }
+
+  .resetButton {
+    background-color: transparent;
+    color: #666;
+    border: 1px solid #e0e0e0;
+    flex: 1;
+
+    &:hover {
+      background-color: #f5f5f5;
+      color: #333;
+    }
+  }
 }
