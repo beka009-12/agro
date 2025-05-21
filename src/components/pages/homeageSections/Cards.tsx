@@ -3,7 +3,7 @@ import scss from "./Cards.module.scss";
 import Card from "../../../ui/Card";
 
 const Cards: FC = () => {
-  const allCards = Array.from({ length: 24 }); // Заглушки
+  const allCards = Array.from({ length: 24 });
   const [visibleCount, setVisibleCount] = useState(9);
 
   const handleShowMore = () => {

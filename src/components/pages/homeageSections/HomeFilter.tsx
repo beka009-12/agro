@@ -5,6 +5,7 @@ const HomeFilter: FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [selectedRegion, setSelectedRegion] = useState<string>("");
   const [unitType, setUnitType] = useState<string>("all");
+
   const [priceRange, setPriceRange] = useState<{ min: string; max: string }>({
     min: "0",
     max: "10000",
@@ -75,78 +76,126 @@ const HomeFilter: FC = () => {
   };
 
   return (
-    <div className={scss.homeFilter}>
-      <div className="container">
-        <div className={scss.filterContainer}>
-          <h2 className={scss.filterTitle}>Фильтры</h2>
+    <>
+      <div className={scss.homeFilter}>
+        <div className="container">
+          <div className={scss.filterContainer}>
+            <h2 className={scss.filterTitle}>Фильтры</h2>
 
-          {/* Категории */}
-          <div className={scss.filterSection}>
-            <h3 className={scss.sectionTitle}>Категории</h3>
-            <div className={scss.categoriesGrid}>
-              {categories.map(({ label, img }) => (
-                <div
-                  key={label}
-                  className={`${scss.categoryCard} ${
-                    selectedCategory === label ? scss.active : ""
-                  }`}
-                  onClick={() => setSelectedCategory(label)}
-                >
-                  <img src={img} alt={label} className={scss.categoryImage} />
-                  <span className={scss.categoryCardLabel}>{label}</span>
+            {/* Категории */}
+            <div className={scss.filterSection}>
+              <h3 className={scss.sectionTitle}>Категории</h3>
+              <div className={scss.categoriesGrid}>
+                {categories.map(({ label, img }) => (
+                  <div
+                    key={label}
+                    className={`${scss.categoryCard} ${
+                      selectedCategory === label ? scss.active : ""
+                    }`}
+                    onClick={() => setSelectedCategory(label)}
+                  >
+                    <img src={img} alt={label} className={scss.categoryImage} />
+                    <span className={scss.categoryCardLabel}>{label}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Регион */}
+            <div className={scss.filterSection}>
+              <h3 className={scss.sectionTitle}>Регион</h3>
+              <select
+                className={scss.regionSelect}
+                value={selectedRegion}
+                onChange={(e) => setSelectedRegion(e.target.value)}
+              >
+                <option value="">Все регионы</option>
+                {regions.map((region) => (
+                  <option key={region} value={region}>
+                    {region}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Тип товара */}
+            <div className={scss.filterSection}>
+              <h3 className={scss.sectionTitle}>Тип товара</h3>
+              <div className={scss.unitTypeButtons}>
+                {["all", "kg", "piece"].map((type) => (
+                  <button
+                    key={type}
+                    className={`${scss.unitTypeButton} ${
+                      unitType === type ? scss.active : ""
+                    }`}
+                    onClick={() => setUnitType(type)}
+                  >
+                    {type === "all"
+                      ? "Все"
+                      : type === "kg"
+                      ? "Килограммы"
+                      : "Штучно"}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Цена */}
+            <div className={scss.filterSection}>
+              <h3 className={scss.sectionTitle}>Цена</h3>
+              <div className={scss.priceInputs}>
+                <div className={scss.priceInputGroup}>
+                  <label className={scss.priceLabel}>от</label>
+                  <input
+                    type="number"
+                    className={scss.priceInput}
+                    value={priceRange.min}
+                    onChange={(e) =>
+                      setPriceRange((prev) => ({
+                        ...prev,
+                        min: e.target.value,
+                      }))
+                    }
+                    onBlur={() =>
+                      setPriceRange((prev) => ({
+                        ...prev,
+                        min: prev.min.trim() === "" ? "0" : prev.min,
+                      }))
+                    }
+                    min="0"
+                  />
                 </div>
-              ))}
-            </div>
-          </div>
 
-          {/* Регион */}
-          <div className={scss.filterSection}>
-            <h3 className={scss.sectionTitle}>Регион</h3>
-            <select
-              className={scss.regionSelect}
-              value={selectedRegion}
-              onChange={(e) => setSelectedRegion(e.target.value)}
-            >
-              <option value="">Все регионы</option>
-              {regions.map((region) => (
-                <option key={region} value={region}>
-                  {region}
-                </option>
-              ))}
-            </select>
-          </div>
+                <div className={scss.priceInputGroup}>
+                  <label className={scss.priceLabel}>до</label>
+                  <input
+                    type="number"
+                    className={scss.priceInput}
+                    value={priceRange.max}
+                    onChange={(e) =>
+                      setPriceRange((prev) => ({
+                        ...prev,
+                        max: e.target.value,
+                      }))
+                    }
+                    onBlur={() =>
+                      setPriceRange((prev) => ({
+                        ...prev,
+                        max: prev.max.trim() === "" ? "0" : prev.max,
+                      }))
+                    }
+                    min="0"
+                  />
+                </div>
+              </div>
 
-          {/* Тип товара */}
-          <div className={scss.filterSection}>
-            <h3 className={scss.sectionTitle}>Тип товара</h3>
-            <div className={scss.unitTypeButtons}>
-              {["all", "kg", "piece"].map((type) => (
-                <button
-                  key={type}
-                  className={`${scss.unitTypeButton} ${
-                    unitType === type ? scss.active : ""
-                  }`}
-                  onClick={() => setUnitType(type)}
-                >
-                  {type === "all"
-                    ? "Все"
-                    : type === "kg"
-                    ? "Килограммы"
-                    : "Штучно"}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Цена */}
-          <div className={scss.filterSection}>
-            <h3 className={scss.sectionTitle}>Цена</h3>
-            <div className={scss.priceInputs}>
-              <div className={scss.priceInputGroup}>
-                <label className={scss.priceLabel}>от</label>
+              {/* Ползунки */}
+              <div className={scss.rangeSlider}>
                 <input
-                  type="number"
-                  className={scss.priceInput}
+                  type="range"
+                  min="0"
+                  max="1000"
+                  step="1"
                   value={priceRange.min}
                   onChange={(e) =>
                     setPriceRange((prev) => ({
@@ -154,21 +203,12 @@ const HomeFilter: FC = () => {
                       min: e.target.value,
                     }))
                   }
-                  onBlur={() =>
-                    setPriceRange((prev) => ({
-                      ...prev,
-                      min: prev.min.trim() === "" ? "0" : prev.min,
-                    }))
-                  }
-                  min="0"
                 />
-              </div>
-
-              <div className={scss.priceInputGroup}>
-                <label className={scss.priceLabel}>до</label>
                 <input
-                  type="number"
-                  className={scss.priceInput}
+                  type="range"
+                  min="0"
+                  max="1000"
+                  step="1"
                   value={priceRange.max}
                   onChange={(e) =>
                     setPriceRange((prev) => ({
@@ -176,64 +216,27 @@ const HomeFilter: FC = () => {
                       max: e.target.value,
                     }))
                   }
-                  onBlur={() =>
-                    setPriceRange((prev) => ({
-                      ...prev,
-                      max: prev.max.trim() === "" ? "0" : prev.max,
-                    }))
-                  }
-                  min="0"
                 />
+              </div>
+              <div className={scss.rangeValues}>
+                <span>{priceRange.min} ₽</span>
+                <span>{priceRange.max} ₽</span>
               </div>
             </div>
 
-            {/* Ползунки */}
-            <div className={scss.rangeSlider}>
-              <input
-                type="range"
-                min="0"
-                max="1000"
-                step="1"
-                value={priceRange.min}
-                onChange={(e) =>
-                  setPriceRange((prev) => ({
-                    ...prev,
-                    min: e.target.value,
-                  }))
-                }
-              />
-              <input
-                type="range"
-                min="0"
-                max="1000"
-                step="1"
-                value={priceRange.max}
-                onChange={(e) =>
-                  setPriceRange((prev) => ({
-                    ...prev,
-                    max: e.target.value,
-                  }))
-                }
-              />
+            {/* Кнопки */}
+            <div className={scss.filterActions}>
+              <button className={scss.applyButton} onClick={applyFilters}>
+                Применить
+              </button>
+              <button className={scss.resetButton} onClick={resetFilters}>
+                Сбросить
+              </button>
             </div>
-            <div className={scss.rangeValues}>
-              <span>{priceRange.min} ₽</span>
-              <span>{priceRange.max} ₽</span>
-            </div>
-          </div>
-
-          {/* Кнопки */}
-          <div className={scss.filterActions}>
-            <button className={scss.applyButton} onClick={applyFilters}>
-              Применить
-            </button>
-            <button className={scss.resetButton} onClick={resetFilters}>
-              Сбросить
-            </button>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
