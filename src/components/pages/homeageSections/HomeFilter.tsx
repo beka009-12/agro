@@ -1,11 +1,11 @@
 import { type FC, useEffect, useState } from "react";
 import scss from "./HomeFilter.module.scss";
-import Logistic from "./filterSections/Logistic";
 
 const HomeFilter: FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [selectedRegion, setSelectedRegion] = useState<string>("");
   const [unitType, setUnitType] = useState<string>("all");
+
   const [priceRange, setPriceRange] = useState<{ min: string; max: string }>({
     min: "0",
     max: "10000",
