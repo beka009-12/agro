@@ -1,5 +1,5 @@
+import Detail from "../components/pages/Detail";
 import HomePage from "../components/pages/HomePage";
-import DetailPage from "../detail/DetailPage";
 
 export const link = [
   {
@@ -9,6 +9,6 @@ export const link = [
   },
   {
     link: "/details/:id",
-    element: <DetailPage />,
+    element: <Detail />,
   },
 ];
