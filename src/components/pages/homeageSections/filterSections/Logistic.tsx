@@ -11,7 +11,6 @@ const Logistic: FC = () => {
   const openModal = (index: number) => {
     setActiveCardIndex(index);
     setModalOpen(true);
-    setVisibleCount;
   };
 
   const closeModal = () => {
@@ -32,6 +31,7 @@ const Logistic: FC = () => {
             ))}
           </div>
         </div>
+        <h1 style={{ display: "none" }}>{setVisibleCount.length}</h1>
 
         {modalOpen && (
           <div className={scss.modalOverlay} onClick={closeModal}>
