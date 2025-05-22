@@ -3,7 +3,7 @@ import scss from "./Cards.module.scss";
 import Card from "../../../ui/Card";
 
 const Cards: FC = () => {
-  const allCards = Array.from({ length: 24 });
+  const allCards = Array.from({ length: 8 });
   const [visibleCount, setVisibleCount] = useState(12);
 
   const handleShowMore = () => {
@@ -24,10 +24,10 @@ const Cards: FC = () => {
         <div className={scss.content}>
           {allCards.slice(0, visibleCount).map((_, index) => (
             <Card
-              status="Органик"
               key={index}
               id={index}
-              iamge="https://vcagrofinance.kg/wp-content/uploads/2024/03/spring-fruits-65d8f51d00673.jpg"
+              iamge="https://news.transinfo.by/uploads/posts/2021-04/1617973332_man-tgx-2020-1.jpg"
+              status="Доступен"
             />
           ))}
         </div>

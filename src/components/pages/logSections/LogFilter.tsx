@@ -1,11 +1,12 @@
-import { type FC, useEffect, useState } from "react";
-import scss from "./HomeFilter.module.scss";
+import { useEffect, useState, type FC } from "react";
+import scss from "./LogFilter.module.scss";
 import Btn from "../../../ui/btn/Btn";
 
-const HomeFilter: FC = () => {
+const LogFilter: FC = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [selectedRegion, setSelectedRegion] = useState<string>("");
   const [unitType, setUnitType] = useState<string>("all");
+  const [weight, setWeight] = useState({ min: "", max: "" });
 
   const [priceRange, setPriceRange] = useState<{ min: string; max: string }>({
     min: "0",
@@ -14,24 +15,16 @@ const HomeFilter: FC = () => {
 
   const categories = [
     {
-      label: "Фрукты",
-      img: "https://videos.openai.com/vg-assets/assets%2Ftask_01jvvwgv12e6qrx2j7er1vcjyf%2F1747913863_img_1.webp?st=2025-05-22T09%3A43%3A24Z&se=2025-05-28T10%3A43%3A24Z&sks=b&skt=2025-05-22T09%3A43%3A24Z&ske=2025-05-28T10%3A43%3A24Z&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skoid=3d249c53-07fa-4ba4-9b65-0bf8eb4ea46a&skv=2019-02-02&sv=2018-11-09&sr=b&sp=r&spr=https%2Chttp&sig=2w%2Fq8jK78uf%2BKMHd%2B66diSWuWM1aR3qM5%2BX5kuM5Qvw%3D&az=oaivgprodscus",
+      label: "Портек",
+      img: "https://www.autodela.ru/assets/images/hyundai-porter-2.png",
     },
     {
-      label: "Овощи",
-      img: "https://lh5.googleusercontent.com/proxy/yWAvjVuCfV7sp1tcWv-rTziQBsLcnV79d6ZqaYMAsjxQDRpuB05Tl26_ROWwd85I4efKRHxaUA",
+      label: "Грузавик",
+      img: "https://hkimg.bjyyb.net/sites/77000/77003/20230325105355495.webp?x-oss-process=image/resize,m_lfit,w_600/quality,q_75",
     },
     {
-      label: "Зерновые",
-      img: "https://img.freepik.com/premium-photo/wheat-grain-scoop-isolated-white-background_182252-3255.jpg",
-    },
-    {
-      label: "Корм для животных",
-      img: "https://loyal-machine.com/wp-content/uploads/2024/09/1.7-4.png",
-    },
-    {
-      label: "Травы",
-      img: "https://png.pngtree.com/png-vector/20250321/ourmid/pngtree-round-hay-bale-golden-straw-rural-farm-scene-agriculture-isolated-on-png-image_15810699.png",
+      label: "Зил",
+      img: "https://ooopogat.ru/wp-content/uploads/zil.png",
     },
   ];
 
@@ -119,29 +112,28 @@ const HomeFilter: FC = () => {
 
             {/* Тип товара */}
             <div className={scss.filterSection}>
-              <h3 className={scss.sectionTitle}>Тип товара</h3>
-              <div className={scss.unitTypeButtons}>
-                {["all", "kg", "piece"].map((type) => (
-                  <button
-                    key={type}
-                    className={`${scss.unitTypeButton} ${
-                      unitType === type ? scss.active : ""
-                    }`}
-                    onClick={() => setUnitType(type)}
-                  >
-                    {type === "all"
-                      ? "Все"
-                      : type === "kg"
-                      ? "Килограммы"
-                      : "Штучно"}
-                  </button>
-                ))}
-              </div>
+              <h3 className={scss.sectionTitle}>Грузоподъёмность (т)</h3>
+              <select
+                value={weight.max}
+                onChange={(e) =>
+                  setWeight((prev) => ({ ...prev, max: e.target.value }))
+                }
+                className={scss.regionSelect}
+              >
+                <option value="">Любая</option>
+                <option value="1">До 1 т</option>
+                <option value="2">До 2 т</option>
+                <option value="5">До 5 т</option>
+                <option value="10">До 10 т</option>
+                <option value="20">До 20 т</option>
+              </select>
             </div>
 
             {/* Цена */}
             <div className={scss.filterSection}>
-              <h3 className={scss.sectionTitle}>Цена</h3>
+              <h3 className={scss.sectionTitle}>
+                Цена доставки: <strong>кг/шт</strong>
+              </h3>
               <div className={scss.priceInputs}>
                 <div className={scss.priceInputGroup}>
                   <label className={scss.priceLabel}>от</label>
@@ -247,4 +239,4 @@ const HomeFilter: FC = () => {
   );
 };
 
-export default HomeFilter;
+export default LogFilter;

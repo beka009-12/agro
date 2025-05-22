@@ -4,6 +4,8 @@ import scss from "./DetailPage.module.scss";
 import { MdWhatsapp } from "react-icons/md";
 import { FaInstagram } from "react-icons/fa";
 import { MdOutlineLocalPhone } from "react-icons/md";
+import Btn from "../../../ui/btn/Btn";
+import { IoIosClose } from "react-icons/io";
 
 export const mockProducts = [
   {
@@ -77,7 +79,6 @@ const DetailPage: FC = () => {
               ))}
             </div>
           </div>
-
           <div className={scss.infoSection}>
             <h2>{product.title}</h2>
             <p>
@@ -106,9 +107,14 @@ const DetailPage: FC = () => {
               <h4>Описание</h4>
               <p>{product.description}</p>
             </div>
-            <button className={scss.orderBtn} onClick={openModal}>
-              Заказать
-            </button>
+            <div onClick={openModal}>
+              <Btn
+                title="Заказать"
+                BkColor="#4caf50"
+                color="#fff"
+                border="none"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -118,7 +124,7 @@ const DetailPage: FC = () => {
         <div className={scss.modalOverlay} onClick={closeModal}>
           <div className={scss.modal} onClick={(e) => e.stopPropagation()}>
             <button className={scss.close} onClick={closeModal}>
-              ×
+              <IoIosClose />
             </button>
 
             <div className={scss.modalIcons}>

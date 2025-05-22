@@ -1,5 +1,3 @@
-/* Сетка карточек: 3 в ряд */
-
 .box {
   display: flex;
   flex-direction: column;
@@ -27,10 +25,10 @@
     }
   }
   .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-    gap: 24px;
-    margin-bottom: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
   }
 }
 /* ============================ */
@@ -60,7 +58,6 @@
   overflow: hidden;
   position: relative;
   animation: fadeIn 0.3s ease-out;
-
   @media (max-width: 768px) {
     flex-direction: column;
     width: 95%;

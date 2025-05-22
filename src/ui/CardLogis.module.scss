@@ -1,15 +1,18 @@
 .card {
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  width: 320px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
   overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  // transition: 0.3s ease;
 
-  &:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-  }
+  // &:hover {
+  //   transform: translateY(-6px);
+  //   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  // }
 }
 
 .imageWrapper {

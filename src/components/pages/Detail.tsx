@@ -6,7 +6,6 @@ const Detail: FC = () => {
   return (
     <div>
       <DetailPage />
-      {/* <FilterLog /> */}
       <Logistic />
     </div>
   );
