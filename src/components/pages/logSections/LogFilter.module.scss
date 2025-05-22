@@ -28,35 +28,49 @@
     }
   }
 
+  // Категории
   .filterSection {
-    margin-bottom: 2rem;
+    overflow: hidden;
 
-    &:last-child {
-      margin-bottom: 0;
+    .sectionTitle {
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+      font-weight: 600;
     }
   }
 
-  .sectionTitle {
-    font-size: 1.125rem;
-    font-weight: 500;
-    color: #555;
-    margin-bottom: 1rem;
-  }
-
-  // Категории
   .categoriesGrid {
     display: flex;
     gap: 20px;
-    align-items: center;
+    overflow-x: auto;
+    padding-bottom: 12px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 10px;
+    margin-left: 10px;
+
+    &::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #cfd8dc;
+      border-radius: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
 
     .categoryCard {
+      z-index: 999;
+
+      flex: 0 0 auto;
+      scroll-snap-align: start;
       position: relative;
       border-radius: 16px;
-      display: flex;
       width: 136px;
       height: 132px;
-      align-items: flex-start;
-      flex-direction: column;
       padding: 12px;
       border: 1px solid rgba(0, 0, 0, 0.08);
       background-color: #fff;
@@ -138,16 +152,30 @@
   }
 
   .unitTypeButton {
-    flex: 1;
-    padding: 0.75rem 1rem;
-    border-radius: 10px;
-    border: 1px solid #e0e0e0;
-    background-color: #fff;
-    font-size: 0.9rem;
-    font-weight: 500;
-    color: #555;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    width: 100%;
+    border-radius: 8px;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: 0.3s ease;
+    @media (max-width: 768px) {
+      padding: 10px 20px;
+      font-size: 15px;
+      border-radius: 6px;
+    }
+
+    @media (max-width: 480px) {
+      padding: 9px 16px;
+      font-size: 14px;
+      border-radius: 6px;
+    }
+
+    @media (max-width: 360px) {
+      padding: 8px 14px;
+      font-size: 13.5px;
+    }
 
     &:hover {
       background-color: #f5f8f5;
@@ -160,7 +188,6 @@
     }
   }
 
-  // Цена
   .priceInputs {
     display: flex;
     gap: 1rem;
@@ -198,14 +225,12 @@
         box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
       }
 
-      /* Убираем стрелки у input type="number" */
       &::-webkit-outer-spin-button,
       &::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
       }
 
-      /* Firefox */
       -moz-appearance: textfield;
     }
   }
@@ -287,23 +312,6 @@
     @media (max-width: 576px) {
       flex-direction: column;
       gap: 0.75rem;
-    }
-  }
-
-  .resetButton {
-    padding: 0.875rem 1.5rem;
-    border-radius: 10px;
-    font-size: 1rem;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    cursor: pointer;
-
-    &:hover {
-      transform: translateY(-2px);
-    }
-
-    &:active {
-      transform: translateY(0);
     }
   }
 }

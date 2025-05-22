@@ -8,7 +8,9 @@
     color: #fff;
     padding: 12px 24px;
     width: 230px;
+    // margin-left: 20px;
     border: none;
+    display: flex;
     border-radius: 12px;
     font-size: 16px;
     font-weight: 500;
@@ -23,12 +25,25 @@
       outline: none;
       box-shadow: 0 0 0 3px rgba(121, 255, 106, 0.734);
     }
+    @media (max-width: 768px) {
+      justify-content: center;
+      gap: 16px;
+    }
   }
-  .grid {
+  .content {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: space-between;
+
+    @media (max-width: 768px) {
+      justify-content: center;
+      gap: 16px;
+    }
+
+    @media (max-width: 480px) {
+      gap: 12px;
+    }
   }
 }
 /* ============================ */

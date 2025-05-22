@@ -34,6 +34,9 @@
         display: block;
         object-fit: cover;
         border-radius: 12px;
+        @media (max-width: 480px) {
+          height: 350px;
+        }
       }
     }
 
@@ -134,22 +137,6 @@
         align-items: center;
         gap: 8px;
       }
-    }
-  }
-
-  @media (max-width: 768px) {
-    .content {
-      flex-direction: column;
-      padding: 16px;
-    }
-
-    .imageSection,
-    .infoSection {
-      width: 100%;
-    }
-
-    .thumbnails {
-      justify-content: center;
     }
   }
 }
@@ -284,5 +271,120 @@
 
   .phone {
     color: #007aff;
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    padding: 16px;
+    gap: 24px;
+  }
+
+  .imageSection,
+  .infoSection {
+    width: 100%;
+  }
+
+  .imageSection {
+    .mainImage {
+      img {
+        height: 300px; // уменьшенная высота
+      }
+    }
+
+    .thumbnails {
+      justify-content: start;
+      img {
+        width: 60px;
+        height: 60px;
+      }
+    }
+  }
+
+  .infoSection {
+    h2 {
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+
+    .price {
+      font-size: 18px;
+    }
+
+    .map {
+      width: 100%;
+      text-align: start;
+      display: block;
+    }
+
+    .description {
+      padding: 12px;
+
+      h4 {
+        font-size: 16px;
+      }
+
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+
+  .modal {
+    padding: 2rem 1.2rem;
+    max-width: 90%;
+  }
+
+  .modalIcons h2 {
+    font-size: 1.4rem;
+  }
+
+  .icons {
+    padding: 12px;
+    gap: 12px;
+
+    p {
+      font-size: 1rem;
+    }
+
+    svg {
+      font-size: 1.6rem;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .imageSection .mainImage img {
+    height: 220px;
+  }
+
+  .icons {
+    flex-direction: column;
+    align-items: start;
+    text-align: start;
+    padding: 10px;
+  }
+
+  .icons p {
+    font-size: 0.95rem;
+  }
+
+  .modalIcons h2 {
+    font-size: 1.2rem;
+  }
+
+  .close {
+    width: 34px;
+    height: 34px;
+    font-size: 1.6rem;
+  }
+  .mainImage {
+    img {
+      height: 150px;
+    }
   }
 }

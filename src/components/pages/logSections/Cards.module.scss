@@ -6,6 +6,15 @@
     font-weight: 700;
     color: #3b7a57;
     margin-bottom: 24px;
+
+    @media (max-width: 768px) {
+      font-size: 24px;
+      text-align: center;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 20px;
+    }
   }
 
   .content {
@@ -13,6 +22,15 @@
     flex-wrap: wrap;
     gap: 20px;
     justify-content: space-between;
+
+    @media (max-width: 768px) {
+      justify-content: center;
+      gap: 16px;
+    }
+
+    @media (max-width: 480px) {
+      gap: 12px;
+    }
   }
 
   .buttonWrapper {
@@ -21,6 +39,12 @@
     justify-content: center;
     gap: 16px;
     flex-wrap: wrap;
+
+    @media (max-width: 480px) {
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
   }
 
   .showMoreBtn,
@@ -31,6 +55,13 @@
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.2s, color 0.2s;
+
+    @media (max-width: 480px) {
+      width: 100%;
+      max-width: 280px;
+      font-size: 15px;
+      padding: 10px 16px;
+    }
   }
 
   .showMoreBtn {
