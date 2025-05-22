@@ -4,9 +4,11 @@ import scss from "./Card.module.scss";
 
 interface CardProps {
   id: number;
+  iamge: string;
+  status: string;
 }
 
-const Card: FC<CardProps> = ({ id }) => {
+const Card: FC<CardProps> = ({ id, iamge, status }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -14,14 +16,11 @@ const Card: FC<CardProps> = ({ id }) => {
   };
 
   return (
-    <section className={scss.card} onClick={handleClick}>
+    <section className={scss.card}>
       <div className={scss.imageBlock}>
-        <div className={scss.badge}>Органик</div>
+        <div className={scss.badge}>{status}</div>
         <div className={scss.imagePlaceholder}>
-          <img
-            src="https://img5.lalafo.com/i/posters/api_webp/f9/ac/ae/gruzovik-id-43783928-836302279.webp"
-            alt=""
-          />
+          <img src={iamge} alt="" />
         </div>
       </div>
       <div className={scss.info}>
@@ -32,7 +31,9 @@ const Card: FC<CardProps> = ({ id }) => {
         </div>
         <p className={scss.price}>75 сом/кг</p>
         <div className={scss.actions}>
-          <button className={scss.orderBtn}>Заказать</button>
+          <button className={scss.orderBtn} onClick={handleClick}>
+            Заказать
+          </button>
           <button className={scss.contactBtn}>Контакты</button>
         </div>
       </div>

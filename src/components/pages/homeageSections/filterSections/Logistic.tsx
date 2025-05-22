@@ -1,8 +1,12 @@
 import { useState, type FC } from "react";
 import scss from "./Logistic.module.scss";
 import CardLogis from "../../../../ui/CardLogis";
+import { IoIosClose } from "react-icons/io";
+import FilterLog from "../filterLogistic/FilterLog";
 
 const Logistic: FC = () => {
+  const [showFilter, setShowFilter] = useState(false);
+
   const allCards = Array.from({ length: 24 });
   const [visibleCount, setVisibleCount] = useState(12);
   const [modalOpen, setModalOpen] = useState(false);
@@ -22,7 +26,13 @@ const Logistic: FC = () => {
     <section className={scss.Logistic}>
       <div className="container">
         <div className={scss.box}>
-          <button className={scss.button}>Филтрация транспорта</button>
+          <button
+            className={scss.button}
+            onClick={() => setShowFilter((prev) => !prev)}
+          >
+            {showFilter ? "Скрыть фильтр" : "Фильтрация транспорта"}
+          </button>
+          {showFilter && <FilterLog />}
           <div className={scss.grid}>
             {allCards.slice(0, visibleCount).map((_, index) => (
               <div key={index} onClick={() => openModal(index)}>
@@ -31,13 +41,14 @@ const Logistic: FC = () => {
             ))}
           </div>
         </div>
+
         <h1 style={{ display: "none" }}>{setVisibleCount.length}</h1>
 
         {modalOpen && (
           <div className={scss.modalOverlay} onClick={closeModal}>
             <div className={scss.modal} onClick={(e) => e.stopPropagation()}>
               <button className={scss.close} onClick={closeModal}>
-                ×
+                <IoIosClose />
               </button>
 
               <div className={scss.modalLeft}>

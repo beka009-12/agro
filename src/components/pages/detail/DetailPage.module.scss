@@ -119,23 +119,6 @@
       }
     }
 
-    .orderBtn {
-      padding: 12px 24px;
-      background-color: #4caf50;
-      color: #fff;
-      font-size: 16px;
-      font-weight: 600;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      margin: 12px 0;
-      transition: background-color 0.3s ease;
-
-      &:hover {
-        background-color: #388e3c;
-      }
-    }
-
     .contacts {
       margin-top: auto;
 
@@ -174,13 +157,16 @@
 // ?
 .modalOverlay {
   position: fixed;
-  inset: 0;
-  background-color: rgba(0, 0, 0, 0.6);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  animation: fadeIn 0.3s ease;
   z-index: 1000;
+  backdrop-filter: blur(5px);
 }
 
 .modal {
@@ -191,8 +177,8 @@
   max-width: 400px;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
   position: relative;
-  animation: slideUp 0.4s ease;
   text-align: center;
+  animation: fadeIn 0.3s ease-out;
 }
 
 .close {
@@ -293,5 +279,16 @@
   p {
     font-size: 13px;
     color: #222;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

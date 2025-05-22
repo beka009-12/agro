@@ -8,7 +8,7 @@ const FilterLog: FC = () => {
   const [location, setLocation] = useState("");
   const [paymentType, setPaymentType] = useState("all");
 
-  const transportOptions = ["all", "truck", "van", "trailer"];
+  const transportOptions = ["Все", "Грузовик", "Портер", "Фургон"];
   const regions = ["Москва", "Санкт-Петербург", "Новосибирск", "Казань"];
 
   const applyFilters = () => {
@@ -32,89 +32,74 @@ const FilterLog: FC = () => {
 
   return (
     <section className={scss.FilterLog}>
-      <div className="container">
-        <div className={scss.content}>
-          <h2>Фильтрация логистики</h2>
-
-          {/* Тип транспорта */}
-          <div className={scss.section}>
-            <h4>Тип транспорта</h4>
-            <div className={scss.buttons}>
-              {transportOptions.map((type) => (
-                <button
-                  key={type}
-                  onClick={() => setTransportType(type)}
-                  className={`${scss.button} ${
-                    transportType === type ? scss.active : ""
-                  }`}
-                >
-                  {type === "all"
-                    ? "Все"
-                    : type === "truck"
-                    ? "Грузовик"
-                    : type === "van"
-                    ? "Фургон"
-                    : "Прицеп"}
-                </button>
-              ))}
-            </div>
+      <div className={scss.content}>
+        {/* Тип транспорта */}
+        <div className={scss.section}>
+          <h4>Тип транспорта</h4>
+          <div className={scss.buttons}>
+            {transportOptions.map((item) => (
+              <button
+                key={item}
+                onClick={() => setTransportType(item)}
+                className={`${scss.button} ${
+                  transportType === item ? scss.active : ""
+                }`}
+              >
+                {item}
+              </button>
+            ))}
           </div>
+        </div>
 
-          <div className={scss.section}>
-            <h4>Грузоподъёмность (кг)</h4>
-            <div className={scss.range}>
-              <input
-                type="number"
-                placeholder="Мин"
-                value={weight.min}
-                onChange={(e) =>
-                  setWeight((prev) => ({ ...prev, min: e.target.value }))
-                }
-              />
-              <span>–</span>
-              <input
-                type="number"
-                placeholder="Макс"
-                value={weight.max}
-                onChange={(e) =>
-                  setWeight((prev) => ({ ...prev, max: e.target.value }))
-                }
-              />
-            </div>
-          </div>
+        <div className={scss.section}>
+          <h4>Грузоподъёмность (т)</h4>
+          <select
+            value={weight.max}
+            onChange={(e) =>
+              setWeight((prev) => ({ ...prev, max: e.target.value }))
+            }
+            className={scss.select}
+          >
+            <option value="">Любая</option>
+            <option value="1">До 1 т</option>
+            <option value="2">До 2 т</option>
+            <option value="5">До 5 т</option>
+            <option value="10">До 10 т</option>
+            <option value="20">До 20 т</option>
+          </select>
+        </div>
 
-          <div className={scss.section}>
-            <h4>Регион</h4>
-            <select value={region} onChange={(e) => setRegion(e.target.value)}>
-              <option value="">Все регионы</option>
-              {regions.map((r) => (
-                <option key={r} value={r}>
-                  {r}
-                </option>
-              ))}
-            </select>
-          </div>
+        <div className={scss.section}>
+          <h4>Регион</h4>
+          <select value={region} onChange={(e) => setRegion(e.target.value)}>
+            <option value="">Все регионы</option>
+            {regions.map((r) => (
+              <option key={r} value={r}>
+                {r}
+              </option>
+            ))}
+          </select>
+        </div>
 
-          {/* Местоположение */}
-          <div className={scss.section}>
-            <h4>Местоположение</h4>
-            <input
-              type="text"
-              placeholder="Введите город"
-              value={location}
-              onChange={(e) => setLocation(e.target.value)}
-            />
-          </div>
+        {/* Местоположение */}
+        <div className={scss.section}>
+          <h4>Местоположение</h4>
+          <input
+            type="text"
+            placeholder="Введите город"
+            value={location}
+            onChange={(e) => setLocation(e.target.value)}
+          />
+        </div>
 
-          {/* Действия */}
-          <div className={scss.actions}>
-            <button className={scss.apply} onClick={applyFilters}>
-              Применить
-            </button>
-            <button className={scss.reset} onClick={resetFilters}>
-              Сбросить
-            </button>
-          </div>
+        {/* Действия */}
+        <div className={scss.actions}>
+          <button className={scss.apply} onClick={applyFilters}>
+            Применить
+          </button>
+          <button className={scss.reset} onClick={resetFilters}>
+            Сбросить
+          </button>
         </div>
       </div>
     </section>
