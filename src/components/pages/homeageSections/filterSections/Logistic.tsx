@@ -33,7 +33,7 @@ const Logistic: FC = () => {
             {showFilter ? "Скрыть фильтр" : "Фильтрация транспорта"}
           </button>
           {showFilter && <FilterLog />}
-          <div className={scss.grid}>
+          <div className={scss.content}>
             {allCards.slice(0, visibleCount).map((_, index) => (
               <div key={index} onClick={() => openModal(index)}>
                 <CardLogis />

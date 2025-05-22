@@ -72,7 +72,7 @@ const LogFilter: FC = () => {
       <div className={scss.homeFilter}>
         <div className="container">
           <div className={scss.filterContainer}>
-            <h2 className={scss.filterTitle}>Фильтры</h2>
+            <h2 className={scss.filterTitle}>Фильтры транспорта</h2>
 
             {/* Категории */}
             <div className={scss.filterSection}>
@@ -131,9 +131,7 @@ const LogFilter: FC = () => {
 
             {/* Цена */}
             <div className={scss.filterSection}>
-              <h3 className={scss.sectionTitle}>
-                Цена доставки: <strong>кг/шт</strong>
-              </h3>
+              <h3 className={scss.sectionTitle}>Цена доставки: кг/шт</h3>
               <div className={scss.priceInputs}>
                 <div className={scss.priceInputGroup}>
                   <label className={scss.priceLabel}>от</label>
