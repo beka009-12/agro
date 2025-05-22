@@ -131,11 +131,11 @@ const DetailPage: FC = () => {
               <h2>Связаться с владельцом</h2>
               <div className={scss.icons}>
                 <MdWhatsapp className={scss.whatsapp} />
-                <p>whatsapp</p>
+                <p>Whatsapp</p>
               </div>
               <div className={scss.icons}>
                 <FaInstagram className={scss.instagram} />
-                <p>instagram</p>
+                <p>Instagram</p>
               </div>
               <div className={scss.icons}>
                 <MdOutlineLocalPhone className={scss.phone} />

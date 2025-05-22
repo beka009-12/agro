@@ -27,6 +27,7 @@ const Cards: FC = () => {
               status="Органик"
               key={index}
               id={index}
+              router="details"
               iamge="https://vcagrofinance.kg/wp-content/uploads/2024/03/spring-fruits-65d8f51d00673.jpg"
             />
           ))}
