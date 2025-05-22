@@ -6,13 +6,14 @@ interface CardProps {
   id: number;
   iamge: string;
   status: string;
+  router: string;
 }
 
-const Card: FC<CardProps> = ({ id, iamge, status }) => {
+const Card: FC<CardProps> = ({ id, iamge, status, router }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/details/${id}`);
+    navigate(`/${router}/${id}`);
   };
 
   return (
@@ -20,11 +21,11 @@ const Card: FC<CardProps> = ({ id, iamge, status }) => {
       <div className={scss.imageBlock}>
         <div className={scss.badge}>{status}</div>
         <div className={scss.imagePlaceholder}>
-          <img src={iamge} alt="" />
+          <img src={iamge} alt="iamge" />
         </div>
       </div>
       <div className={scss.info}>
-        <h3>Органические помидоры</h3>
+        <h3>Органические</h3>
         <div className={scss.locationRow}>
           <span>Чуйская область</span>
           <span className={scss.amount}>Доступно: 500 кг</span>
